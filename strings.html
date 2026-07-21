@@ -1,0 +1,125 @@
+<!-- 
+    Joshua Burgess
+    Assignment -User Input Validation
+    I did use AI for some help.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>String Validation Assignment</title>
+
+    <style>
+        body {
+            background-color: #e3f2fd; 
+            font-family: Arial, sans-serif; 
+            padding: 20px;
+        }
+
+        .container {
+            background: white; 
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>User Input Validation</h2>
+
+        
+        <label>First Name:</label>
+
+        <input id="Joshua" type="text">
+
+       
+        <label>Last Name:</label>
+       
+        <input id="Burgess" type="text">
+
+        <label>Zip Code:</label>
+       
+        <input id="24112" type="text">
+
+        <button onclick="validateInputs()">Submit</button>
+
+        
+        <p id="output"></p>
+
+        
+        <img src="https://images.unsplash.com/photo-1503264116251-35a269479413" alt="Creative Image">
+
+    </div>
+
+    
+    <script>
+
+        
+        function validateInputs() {
+
+            
+            let first = document.getElementById("firstName").value;
+
+           
+            let last = document.getElementById("lastName").value;
+
+            
+            let fullName = first + " " + last;
+
+            
+            if (fullName.length > 20) {
+               
+                document.getElementById("output").innerText = 
+                    "Error: Your full name is too long (must be 20 characters or less).";
+                return; 
+            }
+
+            
+            let zip = document.getElementById("zipCode").value;
+
+            
+            let zipValid = /^[0-9]{5}$/.test(zip);
+
+            
+            if (!zipValid) {
+                document.getElementById("output").innerText = 
+                    "Error: Zip code must contain exactly 5 digits.";
+                return;
+            }
+
+           
+            document.getElementById("output").innerText = 
+                " Secret Message: You passed all validations! Great job!";
+        }
+
+    </script>
+
+</body>
+</html>
