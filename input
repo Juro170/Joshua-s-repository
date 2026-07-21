@@ -1,0 +1,13 @@
+<input id="userInput" type="text">
+<button onclick="validate()">Submit</button>
+<p id="result"></p>
+
+function validate() {
+    let text = document.getElementById("userInput").value;
+
+    if (text.includes(",")) {
+        document.getElementById("result").innerText = "Invalid: no commas allowed.";
+    } else {
+        document.getElementById("result").innerText = "Valid input!";
+    }
+}
