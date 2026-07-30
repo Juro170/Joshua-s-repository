@@ -1,0 +1,157 @@
+<!-- 
+    Joshua Burgess, JULY 5th, 2023
+    Event Driven Programming Assignment – Meme Movement
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Comment: Page title -->
+    <title>Joshua Burgess CSC page</title>
+
+    <!-- Comment: Link to external CSS -->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- Comment: Creative styling -->
+    <style>
+        body {
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Comment: Meme image must be absolute so it can move */
+        #memeImage {
+            position: absolute;
+            width: 200px;
+            left: 50px;
+            top: 150px;
+        }
+
+        /* Comment: Style buttons */
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #startBtn {
+            background-color: green;
+            color: white;
+        }
+
+        #stopBtn {
+            background-color: red;
+            color: white;
+        }
+
+        /* Comment: Message box for innerHTML validation */
+        #messageBox {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Comment: Page header -->
+    <header>
+        <h1>Hello, welcome to my page!</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <br>
+            <a href="boards.html">Boards</a>
+        </nav>
+    </header>
+
+    <!-- Comment: Meme image -->
+    <img id="memeImage" src="https://i.kym-cdn.com/photos/images/original/003/140/543/97a.jpg">
+
+    <!-- Comment: Form required by assignment -->
+    <form onsubmit="return false;">
+        <!-- Comment: Start button triggers JS function -->
+        <button id="startBtn" onclick="startButtonFunction()">Start</button>
+
+        <!-- Comment: Stop button triggers JS function -->
+        <button id="stopBtn" onclick="stopButtonFunction()" disabled>Stop</button>
+    </form>
+
+    <!-- Comment: Box for innerHTML messages -->
+    <div id="messageBox"></div>
+
+    <!-- Comment: JavaScript begins -->
+    <script>
+
+        // Comment: Variable to store movement interval
+        let movementInterval;
+
+        // Comment: Function called when Start button is clicked
+        function startButtonFunction() {
+
+            // Comment: Disable Start button
+            document.getElementById("startBtn").disabled = true;
+
+            // Comment: Enable Stop button
+            document.getElementById("stopBtn").disabled = false;
+
+            // Comment: Display message using innerHTML
+            document.getElementById("messageBox").innerHTML = "Meme is moving!";
+
+            // Comment: Call function that moves the meme
+            moveMemeFunction();
+        }
+
+        // Comment: Function called when Stop button is clicked
+        function stopButtonFunction() {
+
+            // Comment: Enable Start button
+            document.getElementById("startBtn").disabled = false;
+
+            // Comment: Disable Stop button
+            document.getElementById("stopBtn").disabled = true;
+
+            // Comment: Display message using innerHTML
+            document.getElementById("messageBox").innerHTML = "Meme movement stopped.";
+
+            // Comment: Call function that stops movement
+            stopMemeFunction();
+        }
+
+        // Comment: Function that moves the meme around the page
+        function moveMemeFunction() {
+
+            // Comment: Set interval to move meme every 300ms
+            movementInterval = setInterval(() => {
+
+                // Comment: Get meme element
+                const meme = document.getElementById("memeImage");
+
+                // Comment: Generate random X and Y positions
+                const randomX = Math.random() * (window.innerWidth - 250);
+                const randomY = Math.random() * (window.innerHeight - 250);
+
+                // Comment: Apply new position
+                meme.style.left = randomX + "px";
+                meme.style.top = randomY + "px";
+
+            }, 300);
+        }
+
+        // Comment: Function that stops meme movement
+        function stopMemeFunction() {
+
+            // Comment: Clear interval to stop movement
+            clearInterval(movementInterval);
+        }
+
+    </script>
+
+</body>
+</html>
