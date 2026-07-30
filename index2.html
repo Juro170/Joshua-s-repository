@@ -1,83 +1,141 @@
-<!-- Joshua Burgess, JULY 5th, 2023-->
- <!DOCTYPE html>
- <html>
+<!-- 
+    Joshua Burgess, JULY 5th, 2023
+    Event Driven Programming Assignment – Meme Movement
+-->
 
- <head>
+<!DOCTYPE html>
+<html>
+
+<head>
+   
     <title>Joshua Burgess CSC page</title>
 
+   
     <link rel="stylesheet" href="main.css">
+
+   
+    <style>
+        body {
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+      
+        #memeImage {
+            position: absolute;
+            width: 200px;
+            left: 50px;
+            top: 150px;
+        }
+
+       
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #startBtn {
+            background-color: green;
+            color: white;
+        }
+
+        #stopBtn {
+            background-color: red;
+            color: white;
+        }
+
+        
+        #messageBox {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+
    
-<header>
-    <h1> Hello, welcome to my page! </h1>
+    <header>
+        <h1>Hello, welcome to my page!</h1>
 
         <nav>
             <a href="index.html">Home</a>
             <br>
             <a href="boards.html">Boards</a>
         </nav>
-</header>
+    </header>
 
-        <p>
-            <img id="memeImage" src="https://i.kym-cdn.com/photos/images/original/003/140/543/97a.jpg"
-        </p>
-    </body>
-
-  <h1>Meme Movement – Event Driven Programming</h1>
+   
+    <img id="memeImage" src="https://i.kym-cdn.com/photos/images/original/003/140/543/97a.jpg">
 
    
     <form onsubmit="return false;">
-       
+      
         <button id="startBtn" onclick="startButtonFunction()">Start</button>
 
+        
         <button id="stopBtn" onclick="stopButtonFunction()" disabled>Stop</button>
     </form>
 
-    <img id="meme" src="https://i.imgflip.com/7xqg7p.jpg" alt="Meme">
-
+    
     <div id="messageBox"></div>
 
+   
     <script>
 
+        
         let movementInterval;
 
+        
         function startButtonFunction() {
 
+           
             document.getElementById("startBtn").disabled = true;
 
+           
             document.getElementById("stopBtn").disabled = false;
 
+           
             document.getElementById("messageBox").innerHTML = "Meme is moving!";
 
+           
             moveMemeFunction();
         }
-     
+
+       
         function stopButtonFunction() {
-         
+
+            
             document.getElementById("startBtn").disabled = false;
-         
+
+           
             document.getElementById("stopBtn").disabled = true;
 
+            
             document.getElementById("messageBox").innerHTML = "Meme movement stopped.";
 
            
             stopMemeFunction();
- }
+        }
 
        
         function moveMemeFunction() {
 
-           
+            
             movementInterval = setInterval(() => {
 
                 
-                const meme = document.getElementById("meme");
+                const meme = document.getElementById("memeImage");
 
-               
-                const randomX = Math.random() * (window.innerWidth - 200);
-                const randomY = Math.random() * (window.innerHeight - 200);
+              
+                const randomX = Math.random() * (window.innerWidth - 250);
+                const randomY = Math.random() * (window.innerHeight - 250);
 
                
                 meme.style.left = randomX + "px";
@@ -86,10 +144,16 @@
             }, 300);
         }
 
-     
+       
+        function stopMemeFunction() {
+
+            
             clearInterval(movementInterval);
         }
 
     </script>
-        function stopMemeFunction() {
+
+</body>
+</html>
+
 </html>
