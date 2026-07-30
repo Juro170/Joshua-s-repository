@@ -25,4 +25,71 @@
         </p>
     </body>
 
+  <h1>Meme Movement – Event Driven Programming</h1>
+
+   
+    <form onsubmit="return false;">
+       
+        <button id="startBtn" onclick="startButtonFunction()">Start</button>
+
+        <button id="stopBtn" onclick="stopButtonFunction()" disabled>Stop</button>
+    </form>
+
+    <img id="meme" src="https://i.imgflip.com/7xqg7p.jpg" alt="Meme">
+
+    <div id="messageBox"></div>
+
+    <script>
+
+        let movementInterval;
+
+        function startButtonFunction() {
+
+            document.getElementById("startBtn").disabled = true;
+
+            document.getElementById("stopBtn").disabled = false;
+
+            document.getElementById("messageBox").innerHTML = "Meme is moving!";
+
+            moveMemeFunction();
+        }
+     
+        function stopButtonFunction() {
+         
+            document.getElementById("startBtn").disabled = false;
+         
+            document.getElementById("stopBtn").disabled = true;
+
+            document.getElementById("messageBox").innerHTML = "Meme movement stopped.";
+
+           
+            stopMemeFunction();
+ }
+
+       
+        function moveMemeFunction() {
+
+           
+            movementInterval = setInterval(() => {
+
+                
+                const meme = document.getElementById("meme");
+
+               
+                const randomX = Math.random() * (window.innerWidth - 200);
+                const randomY = Math.random() * (window.innerHeight - 200);
+
+               
+                meme.style.left = randomX + "px";
+                meme.style.top = randomY + "px";
+
+            }, 300);
+        }
+
+     
+            clearInterval(movementInterval);
+        }
+
+    </script>
+        function stopMemeFunction() {
 </html>
