@@ -44,14 +44,20 @@
             cursor: pointer;
         }
 
+        #continueBtn {
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #2196f3;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
         #palImg {
             width: 150px;
             margin-top: 20px;
-        }
-
-        #result {
-            margin-top: 20px;
-            font-size: 20px;
         }
     </style>
 </head>
@@ -63,14 +69,46 @@
 
         <img id="palImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Palindrome.svg/2560px-Palindrome.svg.png">
 
-        <form>
+        <form id="palForm">
             <p>Enter a word or phrase:</p>
-            <input type="text">
+            <input type="text" id="userInput" required>
             <input type="submit" value="Check Palindrome">
         </form>
 
         <p id="result"></p>
+
+        <button id="continueBtn" style="display:none;">Check Another Word</button>
     </div>
+
+    <script>
+        let form = document.getElementById("palForm");
+        let result = document.getElementById("result");
+        let continueBtn = document.getElementById("continueBtn");
+
+        form.onsubmit = function() {
+            event.preventDefault();
+            let text = document.getElementById("userInput").value;
+            let cleaned = text.replace(/\s+/g, "").toLowerCase();
+            let reversed = cleaned.split("").reverse().join("");
+
+            if (cleaned === reversed) {
+                result.innerHTML = "<strong>YES!</strong> '" + text + "' is a palindrome!";
+            } else {
+                result.innerHTML = "<strong>NO!</strong> '" + text + "' is NOT a palindrome.";
+            }
+
+            continueBtn.style.display = "inline-block";
+            form.style.display = "none";
+        };
+
+        continueBtn.onclick = function() {
+            form.style.display = "block";
+            document.getElementById("userInput").value = "";
+            result.innerHTML = "";
+            continueBtn.style.display = "none";
+        };
+    </script>
 
 </body>
 </html>
+
