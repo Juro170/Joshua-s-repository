@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Validation</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="meme.html">Meme</a>
+    <a href="game.html">Game</a>
+    <a href="palindrome.html">Palindrome</a>
+    <a href="validation.html">User Validation</a>
+    <a href="objectives.html">Objectives</a>
+    <a href="table.html">Table</a>
+</nav>
+
+<div class="container">
+    <h1>User Validation</h1>
+
+    <form id="valForm">
+        <p>Enter your name (must be at least 3 characters):</p>
+        <input type="text" id="nameInput" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="valResult"></p>
+</div>
+
+<script>
+    let form = document.getElementById("valForm");
+    let result = document.getElementById("valResult");
+
+    form.onsubmit = function() {
+        event.preventDefault();
+
+        let name = document.getElementById("nameInput").value;
+
+        if (name.length >= 3) {
+            result.innerHTML = "Welcome, " + name + "!";
+        } else {
+            result.innerHTML = "Name must be at least 3 characters.";
+        }
+    };
+</script>
+
+</body>
+</html>
