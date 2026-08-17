@@ -1,0 +1,12 @@
+final-project/
+│
+├── index.html
+├── meme.html
+├── game.html
+├── palindrome.html
+├── validation.html
+├── objectives.html
+├── table.html
+│
+└── styles/
+    └── main.css
