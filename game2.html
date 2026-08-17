@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Page</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="meme.html">Meme</a>
+    <a href="game.html">Game</a>
+    <a href="palindrome.html">Palindrome</a>
+    <a href="validation.html">User Validation</a>
+    <a href="objectives.html">Objectives</a>
+    <a href="table.html">Table</a>
+</nav>
+
+<div class="container">
+    <h1>Guess the Number Game</h1>
+
+    <form id="gameForm">
+        <p>Guess a number between 1 and 10:</p>
+        <input type="number" id="guess" required>
+        <input type="submit" value="Submit Guess">
+    </form>
+
+    <p id="gameResult"></p>
+</div>
+
+<script>
+    let secret = Math.floor(Math.random() * 10) + 1;
+    let form = document.getElementById("gameForm");
+    let result = document.getElementById("gameResult");
+
+    form.onsubmit = function() {
+        event.preventDefault();
+        let guess = Number(document.getElementById("guess").value);
+
+        if (guess === secret) {
+            result.innerHTML = "Correct! You guessed the number!";
+        } else {
+            result.innerHTML = "Wrong! Try again.";
+        }
+    };
+</script>
+
+</body>
+</html>
